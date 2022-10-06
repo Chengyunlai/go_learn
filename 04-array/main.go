@@ -29,7 +29,8 @@ func main() {
 	fmt.Println(array4) //[3 4]
 
 	// 获取数组的长度
-	fmt.Println(len(array3)) //2
+	length := len(array3)
+	fmt.Println(length) //2
 
 	// 特殊用法，跳跃式指定值
 	array5 := [3]int{0:0,2:2}
@@ -51,5 +52,21 @@ func main() {
 	}
 
 	// 切片
+	slice := []int{}
+	slice = append(slice,1,2,3,4,5,6,7,8)
+	// fmt.Printf("地址%p,长度%d,容量%d\n", slice, len(slice), cap(slice))
+	// slice = append(slice,1)
+	// fmt.Printf("地址%p,长度%d,容量%d\n", slice, len(slice), cap(slice))
+  // slice = append(slice,2,3)
+	// fmt.Printf("地址%p,长度%d,容量%d\n", slice, len(slice), cap(slice))
+	// slice = append(slice,4,5,6,7)
+	// fmt.Printf("地址%p,长度%d,容量%d\n", slice, len(slice), cap(slice))
+	// slice = append(slice,8)
+	// fmt.Printf("地址%p,长度%d,容量%d\n", slice, len(slice), cap(slice))
 
+	fmt.Println(slice[:]) //[1 2 3 4 5 6 7 8]
+	fmt.Println(slice[1:]) //[2 3 4 5 6 7 8]
+	fmt.Println(slice[len(slice)-1:]) //[8]
+	fmt.Println(slice[0:1]) //[1]
+	fmt.Println(slice[0]) //1
 }
