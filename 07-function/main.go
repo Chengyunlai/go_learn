@@ -5,7 +5,7 @@ import (
 )
 
 func main() {
-	fmt.Println("你好" + 5)
+	//fmt.Println("你好" + 5)
 	fmt.Println("--匿名函数--")
 	//声明一个变量f  类型是一个函数类型
 	var f func()
