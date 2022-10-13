@@ -2,12 +2,14 @@ package main
 
 import "fmt"
 
+type person struct {
+	name    string //描述姓名
+	age     int    //描述年龄
+	setName func(p *person, name string, age int)
+}
+
 func main() {
-	type person struct {
-		name    string //描述姓名
-		age     int    //描述年龄
-		setName func(p *person, name string, age int)
-	}
+
 	// 定义1
 	var people person
 	fmt.Println(people) //{ 0}
@@ -34,4 +36,12 @@ func main() {
 	people.setName(&people, "张三", 15)
 	fmt.Printf("%p\n", &people)
 	fmt.Println(people)
+
+	people.setter("程云来", 18)
+	fmt.Println(people)
+}
+
+func (people *person) setter(name string, age int) {
+	people.name = name
+	people.age = age
 }
