@@ -10,12 +10,13 @@ func main() {
 	// 注意：这里默认指的路径是指整个工程的根目录，见password的位置
 	// 打开只读文件
 
-	fmt.Println("打开文件")
+	fmt.Println("打开文件", os.O_RDWR)
 	open, err := os.Open("./password.txt") // 返回两个值，第一个是文件对象的指针*File，第二个是判断文件是否存在，如果文件不存在则报错 err != nil
 	if err != nil {
 		fmt.Println("文件打开失败，请查询原因")
 		fmt.Println(err)
 	}
+
 	fmt.Println(open)
 	defer open.Close()
 
@@ -46,10 +47,16 @@ func main() {
 	//read(open) // 读文件是按照文件指针的。
 
 	// 操作文件：写内容
-	n, err := open.WriteString("123") //无法写入，因为这是个只读文件
-	fmt.Println(n)
-	fmt.Println(err) //write ./password.txt: Access is denied.
+	//n, err := open.WriteString("123") //无法写入，因为这是个只读文件
+	//fmt.Println(n)
+	//fmt.Println(err) //write ./password.txt: Access is denied.
 	read(open)
+
+	file, err2 := os.OpenFile("./password.txt", os.O_RDONLY, 0777)
+	fmt.Println(file)
+	fmt.Println(err2)
+	file.WriteString("aaa")
+
 }
 
 func read(open *os.File) {
