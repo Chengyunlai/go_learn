@@ -52,10 +52,18 @@ func main() {
 	//fmt.Println(err) //write ./password.txt: Access is denied.
 	read(open)
 
-	file, err2 := os.OpenFile("./password.txt", os.O_RDONLY, 0777)
+	file, err2 := os.OpenFile("./password.txt", os.O_WRONLY, 0777)
 	fmt.Println(file)
 	fmt.Println(err2)
-	file.WriteString("aaa")
+	read(file)
+	//n, err3 := file.WriteString("aaa")
+	//fmt.Println(n)
+	//fmt.Println(err3)
+
+	str := "abcdefg"
+	bytes := []byte(str)
+	fmt.Println(len(bytes))
+	file.WriteAt(bytes, 1)
 
 }
 
